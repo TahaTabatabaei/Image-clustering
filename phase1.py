@@ -7,16 +7,6 @@ from matplotlib import pyplot
 import numpy as np
 from pprint import pprint
 
-
-# print(myImage.dtype)
-# print(myImage.shape)
-
-# data = asarray(myImage)
-
-# print(data[79])
-
-# data2 = np.ndarray.flatten(data)
-# print(data2)
 k=0
 
 st=""
@@ -38,18 +28,18 @@ for i in range(1,401):
 
 from sklearn.cluster import KMeans
 
-# kmeans = KMeans(init="random",n_clusters=40).fit_predict(imageArr)
-# pprint(kmeans)
+# kmeans = KMeans(init="random",n_clusters=40).fit(imageArr)
+# pprint(kmeans.labels_)
 
 from sklearn.cluster import DBSCAN
 
-# dbscan = DBSCAN(min_samples=2).fit_predict(imageArr)
-# pprint(dbscan)
+dbscan = DBSCAN(eps=2550,min_samples=5).fit(imageArr)
+pprint(dbscan.labels_)
 
 from sklearn.cluster import AgglomerativeClustering
 
-# aglo_avg = AgglomerativeClustering(linkage='average',n_clusters=40).fit_predict(imageArr)
-# aglo_single = AgglomerativeClustering(linkage='single',n_clusters=40).fit_predict(imageArr)
-# aglo_comp = AgglomerativeClustering(linkage='complete',n_clusters=40).fit_predict(imageArr)
+# aglo_avg = AgglomerativeClustering(linkage='average',n_clusters=40).fit(imageArr)
+# aglo_single = AgglomerativeClustering(linkage='single',n_clusters=40).fit(imageArr)
+# aglo_comp = AgglomerativeClustering(linkage='complete',n_clusters=40).fit(imageArr)
 
-# pprint(aglo_avg)
+# pprint(aglo_comp.labels_)
