@@ -1,6 +1,8 @@
 from pprint import pprint
 import numpy as np
 from pprint import pprint
+# labels_true: actuall labels
+# labels_predicted: provided labels by clustering algorithem
 def rand_Index(labels_true,labels_predicted):
     trueP=0
     trueN=0
@@ -24,5 +26,15 @@ def rand_Index(labels_true,labels_predicted):
                     falseP +=1
                 else:
                     trueN +=1
-    return (trueP + trueN)
+    
+    print("trueP:",trueP,"trueN:",trueN,"falseP:",falseP,"falseN:",falseN)
+    RI =0.0
+    numerator = (trueP + trueN) 
+    denominator = (trueP+trueN+falseP+falseN)
+    
+    if(numerator == denominator or denominator == 0):
+        RI = 1.0
+    else:
+        RI = numerator/denominator
+    return RI
 
