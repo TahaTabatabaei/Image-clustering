@@ -6,16 +6,12 @@ def rand_Index(labels_true,labels_predicted):
     trueN=0
     falseN=0
     falseP=0
-    # print("labels:")
-    # print(labels_true[2])
-    # pprint(labels_true)
     for i in range(len(labels_true)):
         for j in range(i+1 ,len(labels_true)):
-            print("i:",i,"j:",j)
-            pair_true = list() 
+            pair_true = [0,0] 
             pair_true[0] = labels_true[i]
             pair_true[1] = labels_true[j]
-            pair_pred = list()
+            pair_pred = [0,0]
             pair_pred[0] = labels_predicted[i]
             pair_pred[1] = labels_predicted[j]
             if(pair_true[0] == pair_true[1]):
