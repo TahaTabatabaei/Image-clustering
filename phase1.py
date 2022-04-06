@@ -7,15 +7,15 @@ from matplotlib import pyplot
 import numpy as np
 from pprint import pprint
 
+datasetSize = 400
 k=0
-
 st=""
 # (400 * 5600) array for images
 imageArr = list()
 # array for actuall labels
 myLabels = list()
 # loop to transform images to array based by their pixels
-for i in range(1,401):
+for i in range(1,(datasetSize+1)):
     if (i%10 == 1):
         k +=1
     # set label
@@ -26,10 +26,16 @@ for i in range(1,401):
     sk = str(k)
     st = si+"_"+sk
     myImage = image.imread("E:/taha/code/HW1/src/ORL/"+st+".jpg")
-    # turn (80*70) image into 5600 1dim array
+    # reshape 3 dim image to 2 dim
+    # if(i>400):
+        # pprint(myImage.shape)
+        # myImage = myImage.reshape(len(myImage),-1)
+        # pprint(myImage.shape)
+    # turn (80*70) image into 5600 1 dim array
     dataFlat = np.ndarray.flatten(myImage)
     # add image to list
     imageArr.append(dataFlat)
+
 
 # KMeans algorithem
 from sklearn.cluster import KMeans
@@ -56,7 +62,7 @@ aglo_comp = AgglomerativeClustering(linkage='complete',n_clusters=40).fit(imageA
 # rand Index algorithem
 from Rand_Index import rand_Index
 
-print("\n*************\nkKMeans(n_clusters=40):")
+print("\n*************\nKMeans(n_clusters=40):")
 print("RI:",rand_Index(myLabels,kmeans.labels_))
 
 print("\n*************\nDBSCAN(eps=2550,min_samples=5):")
@@ -70,4 +76,18 @@ print("RI:",rand_Index(myLabels,aglo_single.labels_))
 
 print("\n*************\nAgglomerativeClustering(linkage='complete',n_clusters=40):")
 print("RI:",rand_Index(myLabels,aglo_comp.labels_))
+
+# from sklearn.neighbors import NearestNeighbors
+
+# neighbors = NearestNeighbors(n_neighbors=20)
+# neighbors_fit = neighbors.fit(imageArr)
+# distances, indices = neighbors_fit.kneighbors(imageArr)
+
+# # pprint(distances)
+# # pprint(indices)
+# distances = np.sort(distances, axis=0)
+# distances = distances[:,1]
+# pyplot.plot(distances)
+# pyplot.show()
+
 
