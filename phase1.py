@@ -36,6 +36,7 @@ for i in range(1,(datasetSize+1)):
     # add image to list
     imageArr.append(dataFlat)
 
+# Phase 1, clustering
 
 # KMeans algorithem
 from sklearn.cluster import KMeans
@@ -76,6 +77,9 @@ print("RI:",rand_Index(myLabels,aglo_single.labels_))
 
 print("\n*************\nAgglomerativeClustering(linkage='complete',n_clusters=40):")
 print("RI:",rand_Index(myLabels,aglo_comp.labels_))
+
+
+#Phase 2, DBSCAN parameter estimation
 
 # from sklearn.neighbors import NearestNeighbors
 
