@@ -1,5 +1,5 @@
 # Image-clustering
-naive image clustring (university assignment)
+simple image clustring (university assignment)
 
 In the first phase, attempt is to try 3 diffrent clustering methods over the ORL dataset:
 K-means, DBSACN & Agglomerative (Single Link, Complete Link, Group Average)
